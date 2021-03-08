@@ -5,10 +5,20 @@ export default class Cena {
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
+    this.sprites = [];
   }
 
   desenhar() {
     this.ctx.fillStyle = "grey";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    for (let index = 0; index < this.sprites.length; index++) {
+      const sprite = this.sprites[index];
+      sprite.desenhar(this.ctx);
+    }
+  }
+
+  adicionar(sprite) {
+    this.sprites.push(sprite);
   }
 }
