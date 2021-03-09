@@ -17,9 +17,11 @@ export default class Cena {
     this.ctx.fillStyle = "grey";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    for (let index = 0; index < this.sprites.length; index++) {
-      const sprite = this.sprites[index];
-      sprite.desenhar(this.ctx);
+    if (this.assets.acabou()) {
+      for (let index = 0; index < this.sprites.length; index++) {
+        const sprite = this.sprites[index];
+        sprite.desenhar(this.ctx);
+      }
     }
 
     this.ctx.fillStyle = "yellow";
@@ -31,8 +33,10 @@ export default class Cena {
   }
 
   passo(dt) {
-    for (const sprite of this.sprites) {
-      sprite.passo(dt);
+    if (this.assets.acabou()) {
+      for (const sprite of this.sprites) {
+        sprite.passo(dt);
+      }
     }
   }
 
