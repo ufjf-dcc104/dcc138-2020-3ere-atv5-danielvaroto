@@ -3,7 +3,7 @@ export default class AssetManager {
     this.aCarregar = 0;
     this.carregadas = 0;
     this.imagens = new Map();
-    this.audio = new Map();
+    this.audios = new Map();
   }
 
   carregaImagem(chave, source) {
@@ -27,7 +27,7 @@ export default class AssetManager {
     });
     audio.src = source;
 
-    this.audio.set(chave, audio);
+    this.audios.set(chave, audio);
 
     this.aCarregar++;
   }
