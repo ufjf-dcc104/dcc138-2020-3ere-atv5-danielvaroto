@@ -53,7 +53,7 @@ export default class Cena {
     this.desenhar();
 
     this.checaColisao();
-    this.removeSprites();
+    this.removeSpritesARemover();
 
     this.iniciar();
     this.t0 = t;
@@ -92,7 +92,12 @@ export default class Cena {
     }
   }
 
-  removeSprites() {
+  removeTodosSprites() {
+    this.sprites = [];
+    this.aRemover = [];
+  }
+
+  removeSpritesARemover() {
     for (const alvo of this.aRemover) {
       const idx = this.sprites.indexOf(alvo);
       if (idx >= 0) {

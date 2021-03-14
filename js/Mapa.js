@@ -64,4 +64,16 @@ export default class Mapa {
     // tiles usados no mapa1 que bloqueiam movimento
     return [48, 109, 110, 61, 59, 50].includes(this.tiles[pmy][pmx]);
   }
+
+  tileNaoBloqueadoAleatorio() {
+    let linhaAleatoria, colunaAleatoria;
+
+    // Gera linha/coluna aleatoria (primeira e ultima linha/coluna nao disponiveis)
+    do {
+      linhaAleatoria = Math.floor(Math.random() * (this.LINHAS - 2)) + 1;
+      colunaAleatoria = Math.floor(Math.random() * (this.COLUNAS - 2)) + 1;
+    } while (this.tileBloqueia(linhaAleatoria, colunaAleatoria));
+
+    return [linhaAleatoria, colunaAleatoria];
+  }
 }

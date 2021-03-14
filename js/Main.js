@@ -23,13 +23,8 @@ const mapa1 = new Mapa(10, 14, 32, assets.img("tiles"));
 mapa1.carregaMapa(modeloMapa1);
 cena1.configuraMapa(mapa1);
 
-const pc = new Sprite({ x: 50, vx: 10 });
-const en1 = new Sprite({ x: 160, vx: -10, color: "red" });
-
-cena1.adicionar(pc);
-cena1.adicionar(en1);
-cena1.adicionar(new Sprite({ x: 115, y: 70, vy: 10, color: "red" }));
-cena1.adicionar(new Sprite({ x: 115, y: 160, vy: -10, color: "red" }));
+adicionaSpritesAleatoriamente();
+setInterval(adicionaSpritesAleatoriamente, 4000);
 
 cena1.iniciar();
 
@@ -49,3 +44,49 @@ document.addEventListener("keydown", (e) => {
       break;
   }
 });
+
+function adicionaSpritesAleatoriamente() {
+  cena1.removeTodosSprites();
+  const cores = [
+    "Black",
+    "Blue",
+    "Brown",
+    "Gold",
+    "Grey",
+    "Green",
+    "Orange",
+    "Pink",
+    "Purple",
+    "Red",
+    "Silver",
+    "White",
+    "Yellow",
+  ];
+  for (let i = 0; i < 10; i++) {
+    const [linha, coluna] = mapa1.tileNaoBloqueadoAleatorio();
+    const cor = cores[Math.floor(Math.random() * cores.length)];
+
+    let vx = 0;
+    let vy = 0;
+    // define uma direcao aleatoria para multiplicar por de vx ou vy
+    let direcao = Math.random() > 0.5 ? -1 : 1;
+
+    // Aleatoriamente decide se a velocidade vai
+    // ser em relacao ao x ou y
+    if (Math.random() > 0.5) {
+      vx = 20 * direcao;
+    } else {
+      vy = 20 * direcao;
+    }
+
+    cena1.adicionar(
+      new Sprite({
+        x: coluna * 32 + 16,
+        y: linha * 32 + 16,
+        vx: vx,
+        vy: vy,
+        color: cor,
+      })
+    );
+  }
+}
