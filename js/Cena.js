@@ -84,6 +84,8 @@ export default class Cena {
   }
 
   quandoColidir(a, b) {
+    this.assets.play("colisao");
+
     if (!this.aRemover.includes(a)) {
       this.aRemover.push(a);
     }

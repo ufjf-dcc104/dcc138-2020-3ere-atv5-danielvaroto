@@ -9,9 +9,7 @@ const mixer = new Mixer(10);
 const assets = new AssetManager(mixer);
 
 assets.carregaImagem("tiles", "assets/tiles.png");
-
-assets.carregaAudio("moeda", "assets/coin.wav");
-assets.carregaAudio("boom", "assets/boom.wav");
+assets.carregaAudio("colisao", "assets/hurt.wav");
 
 const canvas = document.querySelector("canvas");
 canvas.width = 14 * 32;
@@ -27,23 +25,6 @@ adicionaSpritesAleatoriamente();
 setInterval(adicionaSpritesAleatoriamente, 4000);
 
 cena1.iniciar();
-
-document.addEventListener("keydown", (e) => {
-  switch (e.key) {
-    case "s":
-      cena1.iniciar();
-      break;
-    case "S":
-      cena1.parar();
-      break;
-    case "c":
-      assets.play("moeda");
-      break;
-    case "b":
-      assets.play("boom");
-      break;
-  }
-});
 
 function adicionaSpritesAleatoriamente() {
   cena1.removeTodosSprites();
