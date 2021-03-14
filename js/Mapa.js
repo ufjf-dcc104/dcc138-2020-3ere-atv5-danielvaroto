@@ -1,10 +1,11 @@
 export default class Mapa {
-  constructor(linhas = 8, colunas = 12, tamanho = 32) {
+  constructor(linhas = 8, colunas = 12, tamanho = 32, image) {
     this.LINHAS = linhas;
     this.COLUNAS = colunas;
     this.SIZE = tamanho;
     this.tiles = [];
     this.cena = null;
+    this.image = image;
 
     for (let l = 0; l < this.LINHAS; l++) {
       this.tiles[l] = [];

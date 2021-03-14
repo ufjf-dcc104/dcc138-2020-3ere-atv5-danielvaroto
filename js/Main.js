@@ -8,9 +8,7 @@ import modeloMapa1 from "../maps/mapa1.js";
 const mixer = new Mixer(10);
 const assets = new AssetManager(mixer);
 
-assets.carregaImagem("garota", "assets/garota.png");
-assets.carregaImagem("esqueleto", "assets/skelly.png");
-assets.carregaImagem("orc", "assets/orc.png");
+assets.carregaImagem("tiles", "assets/tiles.png");
 
 assets.carregaAudio("moeda", "assets/coin.wav");
 assets.carregaAudio("boom", "assets/boom.wav");
@@ -20,7 +18,7 @@ canvas.width = 14 * 32;
 canvas.height = 10 * 32;
 
 const cena1 = new Cena(canvas, assets);
-const mapa1 = new Mapa(10, 14, 32);
+const mapa1 = new Mapa(10, 14, 32, assets.img("tiles"));
 
 mapa1.carregaMapa(modeloMapa1);
 cena1.configuraMapa(mapa1);
