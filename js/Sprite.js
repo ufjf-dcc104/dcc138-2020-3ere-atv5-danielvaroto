@@ -72,7 +72,7 @@ export default class Sprite {
   aplicaRestricoesDireita(pmx, pmy) {
     if (this.vx > 0) {
       const SIZE = this.cena.mapa.SIZE;
-      if (this.cena.mapa.tiles[pmy][pmx] != 0) {
+      if (this.cena.mapa.tileBloqueia(pmy, pmx)) {
         const tile = {
           x: pmx * SIZE + SIZE / 2,
           y: pmy * SIZE + SIZE / 2,
@@ -99,7 +99,7 @@ export default class Sprite {
       const SIZE = this.cena.mapa.SIZE;
       const pmx = this.mx - 1;
       const pmy = this.my;
-      if (this.cena.mapa.tiles[pmy][pmx] != 0) {
+      if (this.cena.mapa.tileBloqueia(pmy, pmx)) {
         const tile = {
           x: pmx * SIZE + SIZE / 2,
           y: pmy * SIZE + SIZE / 2,
@@ -126,7 +126,7 @@ export default class Sprite {
       const SIZE = this.cena.mapa.SIZE;
       const pmx = this.mx;
       const pmy = this.my + 1;
-      if (this.cena.mapa.tiles[pmy][pmx] != 0) {
+      if (this.cena.mapa.tileBloqueia(pmy, pmx)) {
         const tile = {
           x: pmx * SIZE + SIZE / 2,
           y: pmy * SIZE + SIZE / 2,
@@ -153,7 +153,7 @@ export default class Sprite {
       const SIZE = this.cena.mapa.SIZE;
       const pmx = this.mx;
       const pmy = this.my - 1;
-      if (this.cena.mapa.tiles[pmy][pmx] != 0) {
+      if (this.cena.mapa.tileBloqueia(pmy, pmx)) {
         const tile = {
           x: pmx * SIZE + SIZE / 2,
           y: pmy * SIZE + SIZE / 2,

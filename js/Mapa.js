@@ -59,4 +59,9 @@ export default class Mapa {
   calculaPosicaoDoTile(tile) {
     return [Math.floor(tile / 8), tile % 8];
   }
+
+  tileBloqueia(pmy, pmx) {
+    // tiles usados no mapa1 que bloqueiam movimento
+    return [48, 109, 110, 61, 59, 50].includes(this.tiles[pmy][pmx]);
+  }
 }
