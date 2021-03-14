@@ -24,6 +24,7 @@ export default class Cena {
       for (let index = 0; index < this.sprites.length; index++) {
         const sprite = this.sprites[index];
         sprite.desenhar(this.ctx);
+        sprite.aplicaRestricoes();
       }
     }
 
