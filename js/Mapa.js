@@ -19,25 +19,9 @@ export default class Mapa {
   desenhar(ctx) {
     for (let l = 0; l < this.LINHAS; l++) {
       for (let c = 0; c < this.COLUNAS; c++) {
-        let imgLine;
-        let imgColumn;
-
-        switch (this.tiles[l][c]) {
-          case 1:
-            imgLine = 0;
-            imgColumn = 2;
-            ctx.lineWidth = 1;
-            break;
-          case 2:
-            imgLine = 2;
-            imgColumn = 0;
-            break;
-
-          default:
-            imgLine = 3;
-            imgColumn = 2;
-            break;
-        }
+        const [imgLine, imgColumn] = this.calculaPosicaoDoTile(
+          this.tiles[l][c]
+        );
 
         ctx.drawImage(
           this.image,
@@ -66,5 +50,13 @@ export default class Mapa {
         this.tiles[l][c] = modelo[l][c];
       }
     }
+  }
+
+  // Primeiro tile (tile = 0) retorna [0,0]
+  // Segundo tile (tile = 1) retorna [0,1]
+  // ...
+  // Ultimo tile (tile = 71) retorna [8,7]
+  calculaPosicaoDoTile(tile) {
+    return [Math.floor(tile / 8), tile % 8];
   }
 }
