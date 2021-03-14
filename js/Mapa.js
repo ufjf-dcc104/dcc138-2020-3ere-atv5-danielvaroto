@@ -52,10 +52,10 @@ export default class Mapa {
     }
   }
 
-  // Primeiro tile (tile = 0) retorna [0,0]
-  // Segundo tile (tile = 1) retorna [0,1]
+  // Primeiro tile (tile = 0) retorna [0, 0]
+  // Segundo tile (tile = 1) retorna [0, 1]
   // ...
-  // Ultimo tile (tile = 71) retorna [8,7]
+  // Ultimo tile (tile = 119) retorna [14, 7]
   calculaPosicaoDoTile(tile) {
     return [Math.floor(tile / 8), tile % 8];
   }
