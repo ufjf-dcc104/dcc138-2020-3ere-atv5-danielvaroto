@@ -19,27 +19,37 @@ export default class Mapa {
   desenhar(ctx) {
     for (let l = 0; l < this.LINHAS; l++) {
       for (let c = 0; c < this.COLUNAS; c++) {
+        let imgLine;
+        let imgColumn;
+
         switch (this.tiles[l][c]) {
           case 1:
-            ctx.fillStyle = "grey";
+            imgLine = 0;
+            imgColumn = 2;
             ctx.lineWidth = 1;
-            ctx.strokeStyle = "black";
             break;
           case 2:
-            ctx.fillStyle = "red";
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = "orange";
+            imgLine = 2;
+            imgColumn = 0;
             break;
 
           default:
-            ctx.fillStyle = "black";
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "grey";
+            imgLine = 3;
+            imgColumn = 2;
             break;
         }
 
-        ctx.strokeRect(c * this.SIZE, l * this.SIZE, this.SIZE, this.SIZE);
-        ctx.fillRect(c * this.SIZE, l * this.SIZE, this.SIZE, this.SIZE);
+        ctx.drawImage(
+          this.image,
+          imgColumn * this.SIZE,
+          imgLine * this.SIZE,
+          this.SIZE,
+          this.SIZE,
+          c * this.SIZE,
+          l * this.SIZE,
+          this.SIZE,
+          this.SIZE
+        );
       }
     }
   }
