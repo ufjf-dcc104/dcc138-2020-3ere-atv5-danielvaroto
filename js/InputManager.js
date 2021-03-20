@@ -16,7 +16,7 @@ export default class InputManager {
     addEventListener("keydown", function (e) {
       const comando = that.teclas.get(e.key);
 
-      if (comand) {
+      if (comando) {
         that.comandos.set(comando, true);
       }
     });
@@ -24,7 +24,7 @@ export default class InputManager {
     addEventListener("keyup", function (e) {
       const comando = that.teclas.get(e.key);
 
-      if (comand) {
+      if (comando) {
         that.comandos.set(comando, false);
       }
     });
