@@ -4,6 +4,7 @@ import Mapa from "./Mapa.js";
 import Mixer from "./Mixer.js";
 import Sprite from "./Sprite.js";
 import InputManager from "./InputManager.js";
+import Game from "./Game.js";
 import modeloMapa1 from "../maps/mapa1.js";
 
 const input = new InputManager();
@@ -24,9 +25,12 @@ input.configurarTeclado({
   ArrowDown: "MOVE_BAIXO",
 });
 
-const cena1 = new Cena(canvas, assets);
-const mapa1 = new Mapa(10, 14, 32, assets.img("tiles"));
+const game = new Game(canvas, assets, input);
 
+const cena1 = new Cena(canvas, assets);
+game.adicionarCena("jogo", cena1);
+
+const mapa1 = new Mapa(10, 14, 32, assets.img("tiles"));
 mapa1.carregaMapa(modeloMapa1);
 cena1.configuraMapa(mapa1);
 
