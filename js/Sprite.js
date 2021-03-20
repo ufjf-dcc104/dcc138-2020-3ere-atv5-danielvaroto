@@ -11,6 +11,7 @@ export default class Sprite {
     vx = 0,
     vy = 0,
     controlar = () => {},
+    tags = [],
   } = {}) {
     this.x = x;
     this.y = y;
@@ -23,6 +24,10 @@ export default class Sprite {
     this.mx = 0;
     this.my = 0;
     this.controlar = controlar;
+    this.tags = new Set();
+    for (let index = 0; index < tags.length; index++) {
+      this.tags.add(tags[index]);
+    }
   }
 
   desenhar(ctx) {
