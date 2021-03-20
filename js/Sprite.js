@@ -104,8 +104,6 @@ export default class Sprite {
   aplicaRestricoesEsquerda(pmx, pmy) {
     if (this.vx < 0) {
       const SIZE = this.cena.mapa.SIZE;
-      const pmx = this.mx - 1;
-      const pmy = this.my;
       if (this.cena.mapa.tileBloqueia(pmy, pmx)) {
         const tile = {
           x: pmx * SIZE + SIZE / 2,
@@ -131,8 +129,6 @@ export default class Sprite {
   aplicaRestricoesBaixo(pmx, pmy) {
     if (this.vy > 0) {
       const SIZE = this.cena.mapa.SIZE;
-      const pmx = this.mx;
-      const pmy = this.my + 1;
       if (this.cena.mapa.tileBloqueia(pmy, pmx)) {
         const tile = {
           x: pmx * SIZE + SIZE / 2,
@@ -158,8 +154,6 @@ export default class Sprite {
   aplicaRestricoesCima(pmx, pmy) {
     if (this.vy < 0) {
       const SIZE = this.cena.mapa.SIZE;
-      const pmx = this.mx;
-      const pmy = this.my - 1;
       if (this.cena.mapa.tileBloqueia(pmy, pmx)) {
         const tile = {
           x: pmx * SIZE + SIZE / 2,
