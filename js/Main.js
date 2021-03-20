@@ -39,9 +39,9 @@ function adicionaSpritesAleatoriamente() {
   cena1.removeTodosSprites();
 
   const pc = new Sprite({
-    x: 3 * 32 + 16,
-    y: 4 * 32 + 16,
-    color: "Red",
+    x: 1 * 32 + 16,
+    y: 3 * 32 + 16,
+    color: "White",
   });
   pc.controlar = function (dt) {
     if (input.comandos.get("MOVE_ESQUERDA")) {
@@ -62,6 +62,19 @@ function adicionaSpritesAleatoriamente() {
   };
 
   cena1.adicionar(pc);
+
+  function perseguePC() {
+    this.vx = 25 * Math.sign(pc.x - this.x);
+    this.vy = 25 * Math.sign(pc.y - this.y);
+  }
+
+  cena1.adicionar(new Sprite({ x: 360, color: "Red", controlar: perseguePC }));
+  cena1.adicionar(
+    new Sprite({ x: 115, y: 70, color: "Red", controlar: perseguePC })
+  );
+  cena1.adicionar(
+    new Sprite({ x: 115, y: 160, color: "Red", controlar: perseguePC })
+  );
 
   // const cores = [
   //   "Black",
