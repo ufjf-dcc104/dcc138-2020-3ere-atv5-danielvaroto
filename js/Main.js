@@ -37,7 +37,7 @@ cena1.configuraMapa(mapa1);
 adicionaSpritesAleatoriamente();
 // setInterval(adicionaSpritesAleatoriamente, 4000);
 
-cena1.iniciar();
+game.iniciar();
 
 function adicionaSpritesAleatoriamente() {
   cena1.removeTodosSprites();
