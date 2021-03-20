@@ -21,4 +21,17 @@ export default class CenaCarregando extends Cena {
       );
     }
   }
+
+  quadro(t) {
+    this.t0 = this.t0 ?? t;
+    this.dt = (t - this.t0) / 1000;
+
+    if (this.assets.acabou() && this.input.comandos.get("PROXIMA_CENA")) {
+      this.game.selecionaCena("jogo");
+      return;
+    }
+    this.desenhar();
+    this.iniciar();
+    this.t0 = t;
+  }
 }
