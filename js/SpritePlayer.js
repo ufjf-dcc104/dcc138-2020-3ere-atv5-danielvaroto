@@ -9,14 +9,14 @@ const poses = [
   { quadros: 8, velocidade: 3 }, // 5- Ataque esquerda (sem sprite da arma)
   { quadros: 8, velocidade: 3 }, // 6- Ataque baixo (sem sprite da arma)
   { quadros: 8, velocidade: 3 }, // 7- Ataque direita (sem sprite da arma)
-  { quadros: 9, velocidade: 3 }, // 8- Andar cima
-  { quadros: 9, velocidade: 3 }, // 9- Andar esquerda
-  { quadros: 9, velocidade: 3 }, // 10- Andar baixo
+  { quadros: 9, velocidade: 10 }, // 8- Andar cima
+  { quadros: 9, velocidade: 10 }, // 9- Andar esquerda
+  { quadros: 9, velocidade: 10 }, // 10- Andar baixo
   { quadros: 9, velocidade: 10 }, // 11- Andar direita
   { quadros: 6, velocidade: 10 }, // 12- Ataque cima (sem sprite da arma)
   { quadros: 6, velocidade: 10 }, // 13- Ataque esquerda (sem sprite da arma)
   { quadros: 6, velocidade: 10 }, // 14- Ataque baixo (sem sprite da arma)
-  { quadros: 6, velocidade: 3 }, // 15- Ataque direita (sem sprite da arma)
+  { quadros: 6, velocidade: 10 }, // 15- Ataque direita (sem sprite da arma)
   { quadros: 13, velocidade: 3 }, // 16- Arco cima
   { quadros: 13, velocidade: 3 }, // 17- Arco esquerda
   { quadros: 13, velocidade: 3 }, // 18- Arco baixo
@@ -33,7 +33,8 @@ export default class SpritePlayer extends Sprite {
     ctx.strokeRect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
 
     this.quadro =
-      this.quadro > poses[this.pose].quadros - 1.1
+      this.quadro > poses[this.pose].quadros - 1.1 ||
+      (this.vx == 0 && this.vy == 0)
         ? 0
         : this.quadro + poses[this.pose].velocidade * dt;
 
@@ -53,20 +54,24 @@ export default class SpritePlayer extends Sprite {
   }
 
   controlar(dt) {
-    if (this.cena.input.comandos.get("MOVE_ESQUERDA")) {
-      this.vx = -50;
-    } else if (this.cena.input.comandos.get("MOVE_DIREITA")) {
-      this.vx = 50;
-    } else {
-      this.vx = 0;
-    }
-
     if (this.cena.input.comandos.get("MOVE_CIMA")) {
+      this.pose = 8;
       this.vy = -50;
     } else if (this.cena.input.comandos.get("MOVE_BAIXO")) {
+      this.pose = 10;
       this.vy = 50;
     } else {
       this.vy = 0;
+    }
+
+    if (this.cena.input.comandos.get("MOVE_ESQUERDA")) {
+      this.pose = 9;
+      this.vx = -50;
+    } else if (this.cena.input.comandos.get("MOVE_DIREITA")) {
+      this.pose = 11;
+      this.vx = 50;
+    } else {
+      this.vx = 0;
     }
 
     if (this.cena.input.comandos.get("BOW_SHOT")) {
