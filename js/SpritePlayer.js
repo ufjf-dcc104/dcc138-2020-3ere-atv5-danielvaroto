@@ -26,9 +26,6 @@ const poses = [
 
 export default class SpritePlayer extends Sprite {
   desenhar(ctx, dt) {
-    this.w = 24;
-    this.h = 24;
-
     ctx.strokeStyle = "blue";
     ctx.strokeRect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
 

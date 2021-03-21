@@ -31,6 +31,8 @@ export default class CenaJogo extends Cena {
     const pc = new SpritePlayer({
       x: 1 * 32 + 16,
       y: 3 * 32 + 16,
+      w: 24,
+      h: 24,
       color: "White",
       tags: ["pc"],
       cena: this,
