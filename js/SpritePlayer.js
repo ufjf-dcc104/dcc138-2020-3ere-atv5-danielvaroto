@@ -92,7 +92,14 @@ export default class SpritePlayer extends Sprite {
   atirarComArco() {
     this.executandoAcao = true;
     this.quadro = 0;
-    this.cena.assets.play("bow-shot");
+
+    setTimeout(
+      function (assets) {
+        assets.play("bow-shot");
+      },
+      300,
+      this.cena.assets
+    );
 
     // Verifica pose atual para escolher pose de tiro
     if (this.pose == 8) {
