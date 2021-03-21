@@ -1,7 +1,8 @@
 import Cena from "./Cena.js";
 import Mapa from "./Mapa.js";
 import modeloMapa1 from "../maps/mapa1.js";
-import Sprite from "./Sprite.js";
+import SpritePlayer from "./SpritePlayer.js";
+import SpriteEnemy from "./SpriteEnemy.js";
 
 export default class CenaJogo extends Cena {
   quandoColidir(a, b) {
@@ -24,33 +25,16 @@ export default class CenaJogo extends Cena {
 
     const mapa1 = new Mapa(10, 14, 32, this.game.assets.img("tiles"));
     mapa1.carregaMapa(modeloMapa1);
+
     this.configuraMapa(mapa1);
 
-    const pc = new Sprite({
+    const pc = new SpritePlayer({
       x: 1 * 32 + 16,
       y: 3 * 32 + 16,
       color: "White",
+      tags: ["pc"],
+      cena: this,
     });
-    pc.tags.add("pc");
-    const cena = this;
-    pc.controlar = function (dt) {
-      if (cena.input.comandos.get("MOVE_ESQUERDA")) {
-        this.vx = -50;
-      } else if (cena.input.comandos.get("MOVE_DIREITA")) {
-        this.vx = 50;
-      } else {
-        this.vx = 0;
-      }
-
-      if (cena.input.comandos.get("MOVE_CIMA")) {
-        this.vy = -50;
-      } else if (cena.input.comandos.get("MOVE_BAIXO")) {
-        this.vy = 50;
-      } else {
-        this.vy = 0;
-      }
-    };
-
     this.adicionar(pc);
 
     function perseguePC() {
@@ -59,29 +43,32 @@ export default class CenaJogo extends Cena {
     }
 
     this.adicionar(
-      new Sprite({
+      new SpriteEnemy({
         x: 360,
         color: "Red",
         controlar: perseguePC,
         tags: ["enemy"],
+        cena: this,
       })
     );
     this.adicionar(
-      new Sprite({
+      new SpriteEnemy({
         x: 115,
         y: 70,
         color: "Red",
         controlar: perseguePC,
         tags: ["enemy"],
+        cena: this,
       })
     );
     this.adicionar(
-      new Sprite({
+      new SpriteEnemy({
         x: 115,
         y: 160,
         color: "Red",
         controlar: perseguePC,
         tags: ["enemy"],
+        cena: this,
       })
     );
   }
