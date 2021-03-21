@@ -39,39 +39,29 @@ export default class CenaJogo extends Cena {
     });
     this.adicionar(pc);
 
-    function perseguePC() {
-      this.vx = 25 * Math.sign(pc.x - this.x);
-      this.vy = 25 * Math.sign(pc.y - this.y);
-    }
-
-    // this.adicionar(
-    //   new SpriteEnemy({
-    //     x: 360,
-    //     color: "Red",
-    //     controlar: perseguePC,
-    //     tags: ["enemy"],
-    //     cena: this,
-    //   })
-    // );
-    // this.adicionar(
-    //   new SpriteEnemy({
-    //     x: 115,
-    //     y: 70,
-    //     color: "Red",
-    //     controlar: perseguePC,
-    //     tags: ["enemy"],
-    //     cena: this,
-    //   })
-    // );
-    // this.adicionar(
-    //   new SpriteEnemy({
-    //     x: 115,
-    //     y: 160,
-    //     color: "Red",
-    //     controlar: perseguePC,
-    //     tags: ["enemy"],
-    //     cena: this,
-    //   })
-    // );
+    this.adicionar(
+      new SpriteEnemy({
+        x: 10 * 32 + 16,
+        y: 3 * 32 + 16,
+        w: 24,
+        h: 24,
+        color: "Red",
+        tags: ["enemy"],
+        cena: this,
+        target: pc,
+      })
+    );
+    this.adicionar(
+      new SpriteEnemy({
+        x: 8 * 32 + 16,
+        y: 5 * 32 + 16,
+        w: 24,
+        h: 24,
+        color: "Red",
+        tags: ["enemy"],
+        cena: this,
+        target: pc,
+      })
+    );
   }
 }

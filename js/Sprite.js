@@ -13,6 +13,7 @@ export default class Sprite {
     cena,
     tags = [],
     controlar,
+    target,
   }) {
     this.x = x;
     this.y = y;
@@ -24,6 +25,7 @@ export default class Sprite {
     this.cena = cena;
     this.mx = 0;
     this.my = 0;
+    this.target = target;
 
     this.tags = new Set();
     for (let index = 0; index < tags.length; index++) {

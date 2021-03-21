@@ -12,6 +12,8 @@ const assets = new AssetManager(mixer);
 
 assets.carregaImagem("tiles", "assets/tiles.png");
 assets.carregaImagem("player", "assets/player.png");
+assets.carregaImagem("enemy", "assets/enemy.png");
+
 assets.carregaAudio("colisao", "assets/hurt.wav");
 assets.carregaAudio("bow-shot", "assets/bow-shot.ogg");
 

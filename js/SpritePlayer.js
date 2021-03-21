@@ -36,6 +36,8 @@ export default class SpritePlayer extends Sprite {
       this.executandoAcao = false;
     }
 
+    this.definirPose();
+
     this.quadro =
       acabouQuadros || (!this.executandoAcao && personagemParado)
         ? 0
@@ -61,20 +63,16 @@ export default class SpritePlayer extends Sprite {
       this.vx = this.vy = 0;
     } else {
       if (this.cena.input.comandos.get("MOVE_CIMA")) {
-        this.pose = 8;
         this.vy = -50;
       } else if (this.cena.input.comandos.get("MOVE_BAIXO")) {
-        this.pose = 10;
         this.vy = 50;
       } else {
         this.vy = 0;
       }
 
       if (this.cena.input.comandos.get("MOVE_ESQUERDA")) {
-        this.pose = 9;
         this.vx = -50;
       } else if (this.cena.input.comandos.get("MOVE_DIREITA")) {
-        this.pose = 11;
         this.vx = 50;
       } else {
         this.vx = 0;
@@ -107,6 +105,20 @@ export default class SpritePlayer extends Sprite {
       this.pose = 17;
     } else if (this.pose == 11) {
       this.pose = 19;
+    }
+  }
+
+  definirPose() {
+    if (!this.executandoAcao) {
+      if (this.vx < 0) {
+        this.pose = 9; // 9- Andar esquerda
+      } else if (this.vx > 0) {
+        this.pose = 11; // 11- Andar direita
+      } else if (this.vy < 0) {
+        this.pose = 8; // 8- Andar cima
+      } else if (this.vy > 0) {
+        this.pose = 10; // 10- Andar baixo
+      }
     }
   }
 }
