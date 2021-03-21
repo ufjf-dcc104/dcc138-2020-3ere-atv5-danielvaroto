@@ -91,8 +91,18 @@ export default class SpritePlayer extends Sprite {
 
   atirarComArco() {
     this.executandoAcao = true;
-    this.pose = 19;
     this.quadro = 0;
     this.cena.assets.play("bow-shot");
+
+    // Verifica pose atual para escolher pose de tiro
+    if (this.pose == 8) {
+      this.pose = 16;
+    } else if (this.pose == 10) {
+      this.pose = 18;
+    } else if (this.pose == 9) {
+      this.pose = 17;
+    } else if (this.pose == 11) {
+      this.pose = 19;
+    }
   }
 }
