@@ -15,7 +15,7 @@ export default class CenaCarregando extends Cena {
 
     if (this.assets.acabou()) {
       this.ctx.fillText(
-        "Aperte espaço para continuar",
+        "Aperte enter para continuar",
         this.canvas.width / 2,
         this.canvas.height / 2 + 40
       );

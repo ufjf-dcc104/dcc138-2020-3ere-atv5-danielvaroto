@@ -13,6 +13,7 @@ const assets = new AssetManager(mixer);
 assets.carregaImagem("tiles", "assets/tiles.png");
 assets.carregaImagem("player", "assets/player.png");
 assets.carregaAudio("colisao", "assets/hurt.wav");
+assets.carregaAudio("bow-shot", "assets/bow-shot.ogg");
 
 const canvas = document.querySelector("canvas");
 canvas.width = 14 * 32;
@@ -23,7 +24,8 @@ input.configurarTeclado({
   ArrowRight: "MOVE_DIREITA",
   ArrowUp: "MOVE_CIMA",
   ArrowDown: "MOVE_BAIXO",
-  " ": "PROXIMA_CENA",
+  " ": "BOW_SHOT",
+  Enter: "PROXIMA_CENA",
 });
 
 const game = new Game(canvas, assets, input);

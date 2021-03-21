@@ -36,6 +36,7 @@ export default class Sprite {
 
     this.quadro = 0;
     this.pose = 11;
+    this.executandoAcao = false;
   }
 
   desenhar(ctx, dt) {
