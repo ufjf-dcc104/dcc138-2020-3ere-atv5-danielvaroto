@@ -42,34 +42,34 @@ export default class CenaJogo extends Cena {
       this.vy = 25 * Math.sign(pc.y - this.y);
     }
 
-    this.adicionar(
-      new SpriteEnemy({
-        x: 360,
-        color: "Red",
-        controlar: perseguePC,
-        tags: ["enemy"],
-        cena: this,
-      })
-    );
-    this.adicionar(
-      new SpriteEnemy({
-        x: 115,
-        y: 70,
-        color: "Red",
-        controlar: perseguePC,
-        tags: ["enemy"],
-        cena: this,
-      })
-    );
-    this.adicionar(
-      new SpriteEnemy({
-        x: 115,
-        y: 160,
-        color: "Red",
-        controlar: perseguePC,
-        tags: ["enemy"],
-        cena: this,
-      })
-    );
+    // this.adicionar(
+    //   new SpriteEnemy({
+    //     x: 360,
+    //     color: "Red",
+    //     controlar: perseguePC,
+    //     tags: ["enemy"],
+    //     cena: this,
+    //   })
+    // );
+    // this.adicionar(
+    //   new SpriteEnemy({
+    //     x: 115,
+    //     y: 70,
+    //     color: "Red",
+    //     controlar: perseguePC,
+    //     tags: ["enemy"],
+    //     cena: this,
+    //   })
+    // );
+    // this.adicionar(
+    //   new SpriteEnemy({
+    //     x: 115,
+    //     y: 160,
+    //     color: "Red",
+    //     controlar: perseguePC,
+    //     tags: ["enemy"],
+    //     cena: this,
+    //   })
+    // );
   }
 }

@@ -18,7 +18,7 @@ export default class Cena {
     if (this.assets.acabou()) {
       for (let index = 0; index < this.sprites.length; index++) {
         const sprite = this.sprites[index];
-        sprite.desenhar(this.ctx);
+        sprite.desenhar(this.ctx, this.dt);
         sprite.aplicaRestricoes();
       }
     }
@@ -32,10 +32,10 @@ export default class Cena {
     this.sprites.push(sprite);
   }
 
-  passo(dt) {
+  passo() {
     if (this.assets.acabou()) {
       for (const sprite of this.sprites) {
-        sprite.passo(dt);
+        sprite.passo(this.dt);
       }
     }
   }

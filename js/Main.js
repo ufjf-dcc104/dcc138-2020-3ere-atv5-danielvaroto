@@ -11,6 +11,7 @@ const mixer = new Mixer(10);
 const assets = new AssetManager(mixer);
 
 assets.carregaImagem("tiles", "assets/tiles.png");
+assets.carregaImagem("player", "assets/player.png");
 assets.carregaAudio("colisao", "assets/hurt.wav");
 
 const canvas = document.querySelector("canvas");

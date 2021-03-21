@@ -33,9 +33,12 @@ export default class Sprite {
     if (controlar) {
       this.controlar = controlar;
     }
+
+    this.quadro = 0;
+    this.pose = 11;
   }
 
-  desenhar(ctx) {
+  desenhar(ctx, dt) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
     ctx.strokeStyle = "blue";
