@@ -38,8 +38,6 @@ export default class SpriteEnemy extends Sprite {
 
     this.definirPose();
 
-    console.log(this.pose);
-
     this.quadro =
       acabouQuadros || (!this.executandoAcao && personagemParado)
         ? 0
