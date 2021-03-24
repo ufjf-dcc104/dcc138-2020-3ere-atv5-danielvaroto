@@ -84,13 +84,39 @@ export default class Cena {
   }
 
   quandoColidir(a, b) {
-    this.assets.play("colisao");
+    if (a.tags.has("chest") && b.tags.has("pc")) {
+      this.assets.play("level-up");
 
-    if (!this.aRemover.includes(a)) {
-      this.aRemover.push(a);
+      this.game.selecionaCena("fim");
+      this.game.cena.texto = `Muitos parabains! Pontos: ${this.game.getPoints()}`;
     }
-    if (!this.aRemover.includes(b)) {
+
+    if (a.tags.has("gem") && b.tags.has("pc")) {
+      this.assets.play("coin");
+
+      this.aRemover.push(a);
+
+      this.game.addPoint();
+    }
+
+    if (a.tags.has("pc") && b.tags.has("enemy")) {
+      this.assets.play("gameover");
+
+      this.game.selecionaCena("fim");
+      this.game.cena.texto = "GAME OVER!";
+    }
+
+    if (a.tags.has("enemy") && b.tags.has("arrow") && b.vx !== 0) {
+      this.assets.play("hurt");
+
+      this.aRemover.push(a);
       this.aRemover.push(b);
+    }
+
+    if (a.tags.has("door") && b.tags.has("pc")) {
+      this.assets.play("level-up");
+
+      this.game.selecionaCena("cena2");
     }
   }
 
