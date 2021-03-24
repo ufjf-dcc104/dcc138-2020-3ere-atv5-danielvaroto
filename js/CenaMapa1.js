@@ -28,6 +28,13 @@ export default class CenaMapa1 extends Cena {
 
       this.game.selecionaCena("fim");
     }
+
+    if (a.tags.has("enemy") && b.tags.has("arrow") && b.vx !== 0) {
+      this.assets.play("hurt");
+
+      this.aRemover.push(a);
+      this.aRemover.push(b);
+    }
   }
 
   preparar() {
@@ -91,17 +98,17 @@ export default class CenaMapa1 extends Cena {
     //     target: pc,
     //   })
     // );
-    // this.adicionar(
-    //   new SpriteEnemy({
-    //     x: 8 * 32 + 16,
-    //     y: 5 * 32 + 16,
-    //     w: 24,
-    //     h: 24,
-    //     color: "Red",
-    //     tags: ["enemy"],
-    //     cena: this,
-    //     target: pc,
-    //   })
-    // );
+    this.adicionar(
+      new SpriteEnemy({
+        x: 8 * 32 + 16,
+        y: 5 * 32 + 16,
+        w: 24,
+        h: 24,
+        color: "Red",
+        tags: ["enemy"],
+        cena: this,
+        target: pc,
+      })
+    );
   }
 }

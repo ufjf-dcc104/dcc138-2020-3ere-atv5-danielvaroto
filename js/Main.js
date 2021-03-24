@@ -24,6 +24,7 @@ assets.carregaAudio("coin", "assets/coin.wav");
 assets.carregaAudio("colisao", "assets/hurt.wav");
 assets.carregaAudio("gameover", "assets/gameover.wav");
 assets.carregaAudio("level-up", "assets/level-up.wav");
+assets.carregaAudio("hurt", "assets/hurt.wav");
 
 const canvas = document.querySelector("canvas");
 canvas.width = 14 * 32;
