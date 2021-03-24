@@ -29,6 +29,7 @@ export default class CenaFim extends Cena {
 
     if (this.assets.acabou() && this.input.comandos.get("PROXIMA_CENA")) {
       this.game.selecionaCena("cena1");
+      this.game.resetPoints();
       return;
     }
     this.desenhar();
