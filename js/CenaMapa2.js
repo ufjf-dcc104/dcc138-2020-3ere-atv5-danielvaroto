@@ -4,14 +4,31 @@ import modeloMapa2 from "../maps/mapa2.js";
 import SpritePlayer from "./SpritePlayer.js";
 import SpriteEnemy from "./SpriteEnemy.js";
 import SpriteDoor from "./SpriteDoor.js";
+import SpriteGem from "./SpriteGem.js";
+import SpriteChest from "./SpriteChest.js";
 
 export default class CenaMapa1 extends Cena {
   quandoColidir(a, b) {
-    const colidiuPCEnemy = (a, b) => a.tags.has("pc") && b.tags.has("enemy");
-    if (colidiuPCEnemy(a, b) || colidiuPCEnemy(b, a)) {
+    if (a.tags.has("chest") && b.tags.has("pc")) {
+      this.assets.play("level-up");
+
+      this.game.selecionaCena("fim");
+      this.game.cena.texto = `Muitos parabains! Pontos: ${this.game.getPoints()}`;
+    }
+
+    if (a.tags.has("gem") && b.tags.has("pc")) {
+      this.assets.play("coin");
+
+      this.aRemover.push(a);
+
+      this.game.addPoint();
+    }
+
+    if (a.tags.has("pc") && b.tags.has("enemy")) {
       this.assets.play("gameover");
 
       this.game.selecionaCena("fim");
+      this.game.cena.texto = "GAME OVER!";
     }
   }
 
@@ -22,6 +39,37 @@ export default class CenaMapa1 extends Cena {
     mapa1.carregaMapa(modeloMapa2);
 
     this.configuraMapa(mapa1);
+
+    const gemPositions = [
+      [4, 7],
+      [6, 2],
+      [9, 3],
+      [9, 6],
+    ];
+    for (let index = 0; index < gemPositions.length; index++) {
+      const [x, y] = gemPositions[index];
+      this.adicionar(
+        new SpriteGem({
+          x: x * 32 + 16,
+          y: y * 32 + 16,
+          w: 16,
+          h: 16,
+          tags: ["gem"],
+          cena: this,
+        })
+      );
+    }
+
+    this.adicionar(
+      new SpriteChest({
+        x: 11 * 32 + 16,
+        y: 4 * 32 + 16,
+        w: 16,
+        h: 16,
+        tags: ["chest"],
+        cena: this,
+      })
+    );
 
     const pc = new SpritePlayer({
       x: 1 * 32 + 16,
@@ -35,7 +83,7 @@ export default class CenaMapa1 extends Cena {
 
     this.adicionar(
       new SpriteEnemy({
-        x: 10 * 32 + 16,
+        x: 11 * 32 + 16,
         y: 3 * 32 + 16,
         w: 24,
         h: 24,

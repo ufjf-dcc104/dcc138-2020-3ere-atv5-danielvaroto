@@ -16,6 +16,7 @@ assets.carregaImagem("player", "assets/player.png");
 assets.carregaImagem("enemy", "assets/enemy.png");
 assets.carregaImagem("door", "assets/door.png");
 assets.carregaImagem("gem", "assets/Gem.png");
+assets.carregaImagem("chest", "assets/ChestBlue.png");
 
 assets.carregaAudio("bow-shot", "assets/bow-shot.ogg");
 assets.carregaAudio("coin", "assets/coin.wav");
