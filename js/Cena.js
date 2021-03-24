@@ -24,7 +24,8 @@ export default class Cena {
     }
 
     this.ctx.fillStyle = "yellow";
-    this.ctx.fillText(this.assets?.progresso(), 10, 20);
+    this.ctx.textAlign = "left";
+    this.ctx.fillText(`Pontos: ${this.game.getPoints()}`, 10, 20);
   }
 
   adicionar(sprite) {

@@ -6,6 +6,7 @@ export default class Game {
     this.input = input;
     this.cenas = new Map();
     this.cena = null;
+    this.points = 0;
   }
 
   adicionarCena(chave, cena) {
@@ -21,6 +22,14 @@ export default class Game {
     }
   }
 
+  addPoint() {
+    this.points++;
+  }
+
+  getPoints() {
+    return this.points;
+  }
+
   selecionaCena(chave) {
     if (this.cenas.has(chave)) {
       this.parar();
@@ -30,7 +39,7 @@ export default class Game {
   }
 
   iniciar() {
-    this.cena?.preparar();
+    this.cena?.preparar(this.texto);
     this.cena?.iniciar();
   }
 
