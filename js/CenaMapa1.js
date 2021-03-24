@@ -27,6 +27,7 @@ export default class CenaMapa1 extends Cena {
       this.assets.play("gameover");
 
       this.game.selecionaCena("fim");
+      this.game.cena.texto = "GAME OVER!";
     }
 
     if (a.tags.has("enemy") && b.tags.has("arrow") && b.vx !== 0) {
