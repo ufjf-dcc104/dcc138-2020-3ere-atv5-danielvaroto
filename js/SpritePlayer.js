@@ -1,4 +1,5 @@
 import Sprite from "./Sprite.js";
+import SpriteArrow from "./SpriteArrow.js";
 
 const poses = [
   { quadros: 7, velocidade: 3 }, // 0- Feitiço cima
@@ -89,8 +90,9 @@ export default class SpritePlayer extends Sprite {
     this.quadro = 0;
 
     setTimeout(
-      function (assets) {
+      (assets) => {
         assets.play("bow-shot");
+        this.criaFlecha();
       },
       300,
       this.cena.assets
@@ -105,6 +107,25 @@ export default class SpritePlayer extends Sprite {
       this.pose = 17;
     } else if (this.pose == 11) {
       this.pose = 19;
+    }
+  }
+
+  criaFlecha() {
+    if (this.pose == 16) {
+    } else if (this.pose == 18) {
+    } else if (this.pose == 17) {
+    } else if (this.pose == 19) {
+      this.cena.adicionar(
+        new SpriteArrow({
+          x: this.x,
+          y: this.y - 3,
+          w: 18,
+          h: 6,
+          vx: 200,
+          tags: ["arrow"],
+          cena: this.cena,
+        })
+      );
     }
   }
 
