@@ -1,21 +1,16 @@
 import Cena from "./Cena.js";
 import Mapa from "./Mapa.js";
-import modeloMapa1 from "../maps/mapa1.js";
+import modeloMapa2 from "../maps/mapa2.js";
 import SpritePlayer from "./SpritePlayer.js";
 import SpriteEnemy from "./SpriteEnemy.js";
+import SpriteDoor from "./SpriteDoor.js";
 
-export default class CenaJogo extends Cena {
+export default class CenaMapa1 extends Cena {
   quandoColidir(a, b) {
-    this.assets.play("colisao");
+    const colidiuPCEnemy = (a, b) => a.tags.has("pc") && b.tags.has("enemy");
+    if (colidiuPCEnemy(a, b) || colidiuPCEnemy(b, a)) {
+      this.assets.play("gameover");
 
-    if (!this.aRemover.includes(a)) {
-      this.aRemover.push(a);
-    }
-    if (!this.aRemover.includes(b)) {
-      this.aRemover.push(b);
-    }
-
-    if (a.tags.has("pc") && b.tags.has("enemy")) {
       this.game.selecionaCena("fim");
     }
   }
@@ -24,7 +19,7 @@ export default class CenaJogo extends Cena {
     super.preparar();
 
     const mapa1 = new Mapa(10, 14, 32, this.game.assets.img("tiles"));
-    mapa1.carregaMapa(modeloMapa1);
+    mapa1.carregaMapa(modeloMapa2);
 
     this.configuraMapa(mapa1);
 
@@ -33,7 +28,6 @@ export default class CenaJogo extends Cena {
       y: 3 * 32 + 16,
       w: 24,
       h: 24,
-      color: "White",
       tags: ["pc"],
       cena: this,
     });
@@ -51,17 +45,17 @@ export default class CenaJogo extends Cena {
         target: pc,
       })
     );
-    this.adicionar(
-      new SpriteEnemy({
-        x: 8 * 32 + 16,
-        y: 5 * 32 + 16,
-        w: 24,
-        h: 24,
-        color: "Red",
-        tags: ["enemy"],
-        cena: this,
-        target: pc,
-      })
-    );
+    // this.adicionar(
+    //   new SpriteEnemy({
+    //     x: 8 * 32 + 16,
+    //     y: 5 * 32 + 16,
+    //     w: 24,
+    //     h: 24,
+    //     color: "Red",
+    //     tags: ["enemy"],
+    //     cena: this,
+    //     target: pc,
+    //   })
+    // );
   }
 }
