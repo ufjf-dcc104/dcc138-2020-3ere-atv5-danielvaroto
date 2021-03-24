@@ -88,29 +88,25 @@ export default class CenaMapa1 extends Cena {
     });
     this.adicionar(pc);
 
-    this.adicionar(
-      new SpriteEnemy({
-        x: 11 * 32 + 16,
-        y: 3 * 32 + 16,
-        w: 24,
-        h: 24,
-        color: "Red",
-        tags: ["enemy"],
-        cena: this,
-        target: pc,
-      })
-    );
-    // this.adicionar(
-    //   new SpriteEnemy({
-    //     x: 8 * 32 + 16,
-    //     y: 5 * 32 + 16,
-    //     w: 24,
-    //     h: 24,
-    //     color: "Red",
-    //     tags: ["enemy"],
-    //     cena: this,
-    //     target: pc,
-    //   })
-    // );
+    const enemyPositions = [
+      [8, 5],
+      [9, 7],
+      [11, 3],
+    ];
+    for (let index = 0; index < enemyPositions.length; index++) {
+      const [x, y] = enemyPositions[index];
+      this.adicionar(
+        new SpriteEnemy({
+          x: x * 32 + 16,
+          y: y * 32 + 16,
+          w: 24,
+          h: 24,
+          color: "Red",
+          tags: ["enemy"],
+          cena: this,
+          target: pc,
+        })
+      );
+    }
   }
 }
