@@ -27,9 +27,6 @@ const poses = [
 
 export default class SpritePlayer extends Sprite {
   desenhar(ctx, dt) {
-    ctx.strokeStyle = "blue";
-    ctx.strokeRect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
-
     let acabouQuadros = this.quadro > poses[this.pose].quadros - 1.1;
     let personagemParado = this.vx === 0 && this.vy === 0;
 
